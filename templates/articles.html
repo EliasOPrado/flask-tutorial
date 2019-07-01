@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>{{article.title}}</h1>
+<!-- articles() is the func -->
+<!-- article is local parameter -->
+<ul class="list-group">
+{% for article in articles %}
+<li class="list-group-item"><a href="articles/{{article.id}}">{{article.title}}</a></li>
+{% endfor %}
+</ul>
+<hr>
+<div>
+    {{article.body | safe}}
+</div>
+{% endblock %}

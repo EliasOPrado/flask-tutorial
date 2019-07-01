@@ -1,4 +1,9 @@
+#Make sure the directy/path is right
 from flask import Flask, render_template
+from data import Articles
+
+#to not confund: this brings the Article function to the article() function
+Articles = Articles()
 
 app = Flask (__name__)
 #to not need to re-launch the server
@@ -8,10 +13,14 @@ app.debug = True
 def index():
     return render_template("home.html")
 
-
 @app.route("/about")
 def about():
     return render_template("about.html")
-    
+
+#articles=articles will give the template its path and route
+@app.route("/articles")
+def articles():
+    return render_template("articles.html", articles= Articles)
+
 if __name__ == "__main__":
     app.run()
