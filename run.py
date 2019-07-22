@@ -31,6 +31,7 @@ def article(id):
     return render_template("article.html", id=id)
 
 #create a class for each form with wtforms
+#definig for users table
 class registerForm(form):
 	name = StringField('Name', [validators.kength(min=1, max=50)])
 	username = StringField('Username', [validators.length(min=4, max=25)])
@@ -44,6 +45,10 @@ class registerForm(form):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 	form = registerForm(request.form)
+	if request.method == 'POST' and form.validate():
+		return render_template('register.html')		
+
+    #return render_template('register.html', form=form)
 
 if __name__ == "__main__":
     app.run()
