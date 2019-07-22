@@ -1,7 +1,10 @@
 #Make sure the directy/path is right
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for, session, logging
 from data import Articles
-
+from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, Validators
+#password incription
+from passlib.hash import sha256_crypt 
 #to not confund: this brings the Article function to the article() function
 Articles = Articles()
 
