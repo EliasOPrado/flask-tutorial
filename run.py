@@ -9,6 +9,17 @@ from passlib.hash import sha256_crypt
 Articles = Articles()
 
 app = Flask (__name__)
+
+# config MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'Elias'
+app.config['MYSQL_PASSWORD'] = 'kb01210012'
+app.config['MYSQL_DB'] = 'myflaskapp'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+# init MySQL
+mysql = MySQL(app)
+
 #to not need to re-launch the server
 app.debug = True
 
@@ -48,7 +59,7 @@ def register():
 	if request.method == 'POST' and form.validate():
 		return render_template('register.html')		
 
-    #return render_template('register.html', form=form)
+    return render_template('register.html', form=form)
 
 if __name__ == "__main__":
     app.run()
